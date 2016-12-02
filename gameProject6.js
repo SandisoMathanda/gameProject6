@@ -9,8 +9,6 @@ var foodEaten = 0;
 var timeStart = Date.now()
 var gamePlaying = true;
 
-if (gamePlaying == true ) {
-
 document.addEventListener("keydown", function(e) {
   if (e.keyCode == 37) {
     x -= 15
@@ -31,21 +29,6 @@ document.addEventListener("keydown", function(e) {
    y = y + 10
   document.getElementById("bird").setAttribute("y", y)
   //down
-}
-})}
-else {
-  document.addEventListener("keydown", function(e) {
-    if (e.keyCode == 37) {
-
-    }
-     else if (e.keyCode == 39) {
-
-    }
-    else if (e.keyCode == 38) {
-
-   }
-   else if (e.keyCode == 40) {
-
 }
 //overlap code
 var birdx = Number(document.getElementById("bird").getAttribute("x"));
@@ -73,7 +56,6 @@ var worm2Height = Number(document.getElementById("worm2").getAttribute("height")
 
 
 if (birdx + 100 < worm1x + worm1Width && birdx + 100 > worm1x && birdy + 50 < worm1y + worm1Height && birdy + 50 > worm1y)
-
 {
 console.log("overlap")
 var randY = randomNumber(50,450)
@@ -93,16 +75,19 @@ else if (birdx + 100 < worm2x + worm2Width && birdx + 100 > worm2x && birdy + 50
 }
 
 if (foodEaten == 1) {
-  console.log("Game over")
+
   document.getElementById("game").pauseAnimations()
-  gamePlaying = false;
   var timeStop = Date.now()
   var duration = timeStop/1000 - timeStart/1000;
   var totalTime = Math.round(duration)
   document.getElementById("totalTime").setAttribute("opacity", 1)
+  if (gamePlaying == true) {
   document.getElementById("totalTime").textContent += totalTime
+  gamePlaying = false;
+  console.log("Game over")
 }
-})}
+}
+})
 
 
 //windows set timeout
