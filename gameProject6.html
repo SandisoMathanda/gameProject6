@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="gameProject6.css">
   </head>
   <body style="margin: 0px; background: lightblue;">
-    <svg width="100%" viewBox="0 0 1000 460" style="background: lightblue;" >
+    <svg id="game" width="100%" viewBox="0 0 1000 460" style="background: lightblue;" >
       <image id="worm1"xlink:href="images/worm.png" x="0" y="0" width="80" height="30" opacity="1">
       <animate id="worm1right" attributeName ="x" from="0" to="1000" dur="5s" begin="0s; worm1left.end"/>
         <animate id="worm1left" attributeName ="x" from="1000" to="0" dur="5s" begin="worm1right.end"/></image>
@@ -15,6 +15,8 @@
       </image>
       <image id="bird" x="0" y="50" width="200" height="100" xlink:href="http://bestanimations.com/Animals/Birds/bird-animated-gif-26.gif">
       </image>
+      <text id="score" x="900" y="50"> 0 </text>
+      <text id="totalTime" x="500" y="200" width="100" height="50" opacity="0" > Total time </text>
     </svg>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="gameProject6.js"></script>

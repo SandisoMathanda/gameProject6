@@ -1,5 +1,15 @@
+// randomNumber returns a random number between min and max
+function randomNumber(min,max)
+{
+ return Math.floor(Math.random()*(max-min+1)+min);
+}
 var x = 0;
 var y =  50;
+var foodEaten = 0;
+var timeStart = Date.now()
+var gamePlaying = true;
+
+if (gamePlaying == true ) {
 
 document.addEventListener("keydown", function(e) {
   if (e.keyCode == 37) {
@@ -21,6 +31,21 @@ document.addEventListener("keydown", function(e) {
    y = y + 10
   document.getElementById("bird").setAttribute("y", y)
   //down
+}
+})}
+else {
+  document.addEventListener("keydown", function(e) {
+    if (e.keyCode == 37) {
+
+    }
+     else if (e.keyCode == 39) {
+
+    }
+    else if (e.keyCode == 38) {
+
+   }
+   else if (e.keyCode == 40) {
+
 }
 //overlap code
 var birdx = Number(document.getElementById("bird").getAttribute("x"));
@@ -47,16 +72,39 @@ var worm2Height = Number(document.getElementById("worm2").getAttribute("height")
 
 
 
-if (birdx < worm1x + worm1Width && birdx > worm1x && birdy < worm1y + worm1Height && birdy > worm1y)
+if (birdx + 100 < worm1x + worm1Width && birdx + 100 > worm1x && birdy + 50 < worm1y + worm1Height && birdy + 50 > worm1y)
 
 {
 console.log("overlap")
+var randY = randomNumber(50,450)
+document.getElementById("worm1").setAttribute("y", randY)
+foodEaten += 1;
+document.getElementById("score").textContent = foodEaten
+
 }
-else if (birdx < worm2x + worm2Width && birdx > worm2x && birdy < worm2y + worm2Height && birdy > worm2y )
+
+else if (birdx + 100 < worm2x + worm2Width && birdx + 100 > worm2x && birdy + 50 < worm2y + worm2Height && birdy + 50 > worm2y )
 {
   console.log("overlap")
+  var randX = randomNumber(50,950)
+  document.getElementById("worm2").setAttribute("x", randX)
+  foodEaten += 1;
+  document.getElementById("score").textContent = foodEaten
 }
-})
+
+if (foodEaten == 1) {
+  console.log("Game over")
+  document.getElementById("game").pauseAnimations()
+  gamePlaying = false;
+  var timeStop = Date.now()
+  var duration = timeStop/1000 - timeStart/1000;
+  var totalTime = Math.round(duration)
+  document.getElementById("totalTime").setAttribute("opacity", 1)
+  document.getElementById("totalTime").textContent += totalTime
+}
+})}
+
+
 //windows set timeout
 //get animation frame
 //document.getElementById("worm").setAttribute("x", x)
