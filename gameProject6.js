@@ -8,6 +8,8 @@ var y =  50;
 var foodEaten = 0;
 var timeStart = Date.now()
 var gamePlaying = true;
+document.getElementById("score").textContent = "Score: " + foodEaten
+
 
 document.addEventListener("keydown", function(e) {
   if (e.keyCode == 37) {
@@ -61,7 +63,7 @@ console.log("overlap")
 var randY = randomNumber(50,450)
 document.getElementById("worm1").setAttribute("y", randY)
 foodEaten += 1;
-document.getElementById("score").textContent = foodEaten
+document.getElementById("score").textContent = "Score: " + foodEaten
 
 }
 
@@ -71,10 +73,10 @@ else if (birdx + 100 < worm2x + worm2Width && birdx + 100 > worm2x && birdy + 50
   var randX = randomNumber(50,950)
   document.getElementById("worm2").setAttribute("x", randX)
   foodEaten += 1;
-  document.getElementById("score").textContent = foodEaten
+  document.getElementById("score").textContent = "Score: " + foodEaten
 }
 
-if (foodEaten == 1) {
+if (foodEaten == 5) {
 
   document.getElementById("game").pauseAnimations()
   var timeStop = Date.now()
@@ -82,7 +84,6 @@ if (foodEaten == 1) {
   var totalTime = Math.round(duration)
   document.getElementById("totalTime").setAttribute("opacity", 1)
   if (gamePlaying == true) {
-  document.getElementById("totalTime").textContent += totalTime
   gamePlaying = false;
   console.log("Game over")
 }
